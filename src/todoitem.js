@@ -1,10 +1,12 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { Text, View, Modal,StyleSheet } from 'react-native';
 import Ionicons from"react-native-vector-icons/Ionicons";
-import { CheckBox } from 'react-native-elements'
+
+
 
 
 const TodoItem = (props) => {
+ 
     return(
         <View style={styles.container}>
             
@@ -17,13 +19,19 @@ const TodoItem = (props) => {
                 />
             <Text style={props.item.isDone ? styles.doneClass:styles.normalClass} >{props.item.title}</Text>
             <View style={styles.action}>
-                <Ionicons  name= "create-outline" size ={25}/>
+                <Ionicons 
+                     name= "create-outline" 
+                     size ={25}
+                     onPress={props.edit}
+                     />
                 <Ionicons
                  name= "trash-outline"
                   size ={25}
-                  onPress={props.delete}
+                  onPress={props.del}
                   />
             </View>
+
+
         </View>
     )
 }
@@ -51,7 +59,7 @@ const styles = StyleSheet.create({
     doneClass: {
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',
-    color: 'red',
+    color: "#ddd",
     fontSize :20
     },
     normalClass: {
